@@ -9,9 +9,14 @@
  */
 class Gate {
     /** @static @member {Array.Gate} */
+    static dirtyGateFound= false
     static allGates= []
     static refreshAllGates() {
-        Gate.allGates.forEach( element => element.refresh())
+        Gate.dirtyGateFound= true
+        while( Gate.dirtyGateFound) {
+            Gate.dirtyGateFound= false
+            Gate.allGates.forEach( element => element.refresh())
+        }
     }
     static clearAllGates() {
         Gate.allGates= []

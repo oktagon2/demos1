@@ -11,6 +11,7 @@ class NorGate extends Gate {
 
     refresh() {
         if( this.dirty) {
+            Gate.dirtyGateFound= true
             var a= this.inputs[0].value
             var b= this.inputs[1].value
             var x= !(a||b)
