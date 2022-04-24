@@ -13,14 +13,21 @@ class Gate {
     static allGates= []
     static refreshAllGates() {
         Gate.dirtyGateFound= true
+        var count= 0
         while( Gate.dirtyGateFound) {
             Gate.dirtyGateFound= false
             Gate.allGates.forEach( element => element.refresh())
+            Gate.allGates.forEach( element => element.sendValue())
+            count= count+ 1
+            if( count>= 100) {
+                console.log( "count >= 100!")
+            }
         }
     }
     static clearAllGates() {
         Gate.allGates= []
     }
+
     constructor() {
         Gate.allGates.push( this)
 
@@ -32,5 +39,9 @@ class Gate {
 
         /** @member {boolean} */
         this.dirty= true
+    }
+
+    sendValue() {
+        this.outputs.forEach( element => element.sendValue())
     }
 }

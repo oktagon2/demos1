@@ -35,4 +35,9 @@ class Input {
     get value() {
         return this._value
     }
+
+    connect( value) {
+        this._value= value;
+        this.gate.recalc();
+    }
 }

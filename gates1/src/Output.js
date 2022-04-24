@@ -15,6 +15,9 @@
 
         /** @member {boolean} */
         this._value= false
+
+        /** @member {boolean} */
+        this.sentValue= false
     }
 
     /**
@@ -23,7 +26,13 @@
     set value( value) {
         if( this._value!= value) {
             this._value= value;
-            this.inputs.forEach( element => element.value= value)
+        }
+    }
+
+    sendValue() {
+        if( this.sentValue!= this._value) {
+            this.inputs.forEach( element => element.value= this._value)
+            this.sentValue= this.value
         }
     }
 
@@ -39,6 +48,6 @@
      */
     addInput( input) {
         this.inputs.push( input);
-        input.value= this.value;
+        input.connect( this.value);
     }
 }

@@ -5,6 +5,7 @@ describe( "RsFlipFlop1", function() {
     })
 
     it( "flip and flop", function() {
+        Gate.clearAllGates()
         var flipFlop= new RsFlipFlop1()
         
         flipFlop.inputS.value= true
